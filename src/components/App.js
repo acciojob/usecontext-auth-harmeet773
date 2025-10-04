@@ -1,18 +1,21 @@
 
-import React from "react";
-import './../styles/App.css';
+import React ,{createContext, useState} from "react";
+import './../styles/App.css';   
 import Auth from "./Auth";
+export const AuthContext = createContext();   
+
+
 
 
 const App = () => {
+  const [authStatus, setAuthStatus] = useState(false);
   return (
     <>
+    <AuthContext.Provider value={{ authStatus, setAuthStatus }}>
     <div>
-        {/* Do not remove the main div */}
-      click on the check box to get authenticated .
     <Auth />
-        hiii 
     </div>
+    </AuthContext.Provider>
     </>
   )
 }
