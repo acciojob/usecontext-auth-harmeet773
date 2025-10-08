@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { AuthContext } from './App';
+import { AuthContext } from '../App';
 
 /*
 Incorporate an `Auth` component that consumes the `AuthContext`
@@ -7,14 +7,14 @@ Incorporate an `Auth` component that consumes the `AuthContext`
  provides a checkbox for the user to interact with.
 Implement a function that toggles the authentication status when the checkbox is checked,
  simulating a user passing the captcha verification.
-*/
+*/   
 function Auth(){
     const { authStatus,setAuthStatus } = useContext(AuthContext);
     console.log(authStatus);
     console.log(authStatus);
     let status ;
     const handleCheckboxChange = (e) => {
-    setAuthStatus(e.target.checked); // toggle based on checkbox
+    setAuthStatus(prev => !prev); // toggle based on checkbox
   };
     if(authStatus){
         status = "You are authenticated,you can proceed";
@@ -27,7 +27,7 @@ function Auth(){
         <h3>Click on the checkbox to get authenticated</h3>   
         { status }
         <br />
-        <input type="checkbox" onClick={handleCheckboxChange} />
+        <input type="checkbox" value={authStatus} onClick={handleCheckboxChange} />
     </div>
     </>
 )}
